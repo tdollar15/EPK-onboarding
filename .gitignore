@@ -1,0 +1,19 @@
+# Generated website (Netlify builds this from source)
+dist/
+
+# Python/test artefacts and local caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.playwright/
+
+# Local development / editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.vscode/
+.idea/
+
+# Browser test screenshots
+previews/
