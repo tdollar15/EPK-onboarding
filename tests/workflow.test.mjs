@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {STAGES,validateUpdate,makeApplicationId,safeAnswerData,publicSummary} from '../netlify/functions/workflow.mjs';
+import {STAGES,validateUpdate,makeApplicationId,safeAnswerData,publicSummary} from '../lib/workflow.mjs';
 const current={stage:'in_production'};
 const valid={stage:'client_approval',notes:'Needs new portrait image',approvalVerified:false,approvalEvidence:''};
 test('six ordered production stages',()=>assert.equal(STAGES.length,6));
