@@ -1,6 +1,6 @@
 import { getDatabase } from '@netlify/database';
 import { createHash } from 'node:crypto';
-import { makeApplicationId, publicSummary, safeAnswerData } from './workflow.mjs';
+import { makeApplicationId, publicSummary, safeAnswerData } from '../../lib/workflow.mjs';
 
 // Netlify invokes this verified, signed platform event internally; this is not a public HTTP handler.
 export default {
