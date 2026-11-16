@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {STAGES,validateUpdate,makeApplicationId,safeAnswerData,publicSummary} from '../netlify/functions/workflow.mjs';
+const current={stage:'in_production'};
+const valid={stage:'client_approval',notes:'Needs new portrait image',approvalVerified:false,approvalEvidence:''};
+test('six ordered production stages',()=>assert.equal(STAGES.length,6));
+test('accept valid state change',()=>assert.equal(validateUpdate(valid,current).stage,'client_approval'));
+test('deny unknown stage',()=>assert.match(validateUpdate({...valid,stage:'cancelled'},current).error,/Invalid/));
+test('block publish without verified approval',()=>assert.match(validateUpdate({...valid,stage:'published'},current).error,/approval/));
+test('verified approval requires evidence',()=>assert.match(validateUpdate({...valid,stage:'published',approvalVerified:true},current).error,/where and when/));
+test('allow publication with evidence',()=>assert.equal(validateUpdate({...valid,stage:'published',approvalVerified:true,approvalEvidence:'Approved by client via email on 16 Nov 2026'},current).stage,'published'));
+test('enforce notes size limit',()=>assert.ok(validateUpdate({...valid,notes:'a'.repeat(5001)},current).error));
+test('cannot retain published without approval',()=>assert.ok(validateUpdate({...valid,stage:'published'}, {stage:'published'}).error));
+test('reject malicious identifier',()=>assert.equal(makeApplicationId('../secret'),null));
+test('sanitize incoming fields',()=>assert.deepEqual(safeAnswerData({'name':'Ada','bot-field':'spam','bad name':'oops','private_contact':'person@example.com'}),{name:'Ada',private_contact:'person@example.com'}));
+test('summarize intake',()=>assert.equal(publicSummary({public_name:'  Singer A  '}).name,'Singer A'));
