@@ -1,6 +1,6 @@
 import { getUser } from '@netlify/identity';
 import { getDatabase } from '@netlify/database';
-import { STAGES, validateUpdate, makeApplicationId } from './workflow.mjs';
+import { STAGES, validateUpdate, makeApplicationId } from '../../lib/workflow.mjs';
 
 const responseHeaders = { 'Cache-Control': 'private, no-store, max-age=0', 'X-Content-Type-Options': 'nosniff' };
 const json = (payload, status = 200) => Response.json(payload, { status, headers: responseHeaders });
