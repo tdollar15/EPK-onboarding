@@ -282,6 +282,8 @@
     }
     // Netlify notification Reply-To: extract an email if the approved combined
     // private email/phone field contains one. Never expose this as a public contact.
+    const appIdField = byId('applicationId');
+    if (appIdField && !appIdField.value) appIdField.value = crypto.randomUUID();
     const replyMatch = valueFor('private_contact').match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
     byId('replyEmail').value = replyMatch ? replyMatch[0] : '';
     saving = true;
