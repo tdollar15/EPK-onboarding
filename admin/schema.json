@@ -1,0 +1,64 @@
+{
+  "name": "EPK Client Intake",
+  "version": 1,
+  "steps": [
+    {"id":"profile","number":"01","title":"Your profile","eyebrow":"First, the essentials","description":"Tell us who we're creating this EPK for. Use the name and professional title you want organizers to see.","short":"Profile","time":"3 min"},
+    {"id":"biography","number":"02","title":"Your story","eyebrow":"The heart of your EPK","description":"Write naturally. You don't have to produce a polished biography—we'll use your answers to draft one for approval.","short":"Story","time":"4 min"},
+    {"id":"ministry","number":"03","title":"Your ministry","eyebrow":"For ministers and travelling preachers","description":"Help churches and organizers understand your ministry focus and the invitations you accept.","short":"Ministry","time":"3 min","conditional":"ministry"},
+    {"id":"artist","number":"04","title":"Your music","eyebrow":"For musicians, DJs and worship teams","description":"Share your sound, your work and the performances you'd like people to discover.","short":"Music","time":"3 min","conditional":"artist"},
+    {"id":"bookings","number":"05","title":"Bookings & invitations","eyebrow":"Make it easy to reach you","description":"Set out your preferred booking process. Private commercial details are kept separate from public information.","short":"Bookings","time":"3 min"},
+    {"id":"media","number":"06","title":"Media & branding","eyebrow":"Bring your EPK to life","description":"Share your best images, videos and links. A cloud folder works best for large media files.","short":"Media","time":"3 min"},
+    {"id":"approval","number":"07","title":"Review & permissions","eyebrow":"Your information, your decision","description":"Confirm which information may be published. We'll still send you the EPK draft for approval before it goes live.","short":"Review","time":"2 min"}
+  ],
+  "fields": [
+    {"step":"profile","name":"profile_type","label":"EPK profile type","kind":"choice","required":true,"options":[["ministry","Travelling ministry","Pastors, evangelists, preachers and teachers"],["artist","Music artist","Singers, DJs, bands, choirs and worship artists"],["both","Ministry & music","You serve in both capacities"]],"full":true},
+    {"step":"profile","name":"public_name","label":"Public name / stage name","kind":"text","required":true,"placeholder":"e.g. Pastor Nomsa Mokoena","full":false},
+    {"step":"profile","name":"title_role","label":"Title / role","kind":"text","required":true,"placeholder":"e.g. Evangelist, Worship Leader","full":false},
+    {"step":"profile","name":"city_province_country","label":"City, province & country","kind":"text","required":true,"placeholder":"e.g. Gqeberha, Eastern Cape, South Africa","full":true},
+    {"step":"profile","name":"ministry_organisation_group","label":"Ministry / organisation / group","kind":"text","placeholder":"Name, if applicable","full":false},
+    {"step":"profile","name":"preferred_languages","label":"Preferred languages","kind":"text","placeholder":"e.g. English, isiXhosa, isiZulu","full":false},
+    {"step":"profile","name":"primary_contact_person","label":"Primary contact person","kind":"text","required":true,"placeholder":"Person coordinating this EPK","full":false},
+    {"step":"profile","name":"private_contact","label":"Private contact email / phone","kind":"text","required":true,"placeholder":"For our team only","hint":"Never published automatically.","full":false,"private":true},
+    {"step":"profile","name":"one_sentence_intro","label":"One-sentence introduction","kind":"textarea","required":true,"rows":3,"placeholder":"I am / We are ... and we help or inspire people through ...","full":true},
+
+    {"step":"biography","name":"journey_beginning","label":"How did your journey begin?","kind":"textarea","required":true,"rows":5,"placeholder":"Tell us about your beginnings, early influences, important turning points and what led you here.","full":true},
+    {"step":"biography","name":"mission_message","label":"Your mission or central message","kind":"textarea","required":true,"rows":4,"placeholder":"What do you want people to understand, experience or remember?","full":true},
+    {"step":"biography","name":"milestones_achievements","label":"Important milestones or achievements","kind":"textarea","rows":4,"placeholder":"Years in ministry, notable events, recordings, awards, outreach, training ...","full":true},
+    {"step":"biography","name":"distinctiveness","label":"What makes your ministry / artistry distinctive?","kind":"textarea","rows":4,"placeholder":"Your voice, approach, audience, values or recurring themes ...","full":true},
+
+    {"step":"ministry","name":"ministry_focus_themes","label":"Ministry focus and key preaching themes","kind":"textarea","required":true,"rows":4,"placeholder":"Evangelism, discipleship, teaching, revival, leadership, youth, family ...","full":true},
+    {"step":"ministry","name":"invitation_types","label":"Types of invitations you accept","kind":"textarea","rows":3,"placeholder":"Sunday services, conferences, crusades, seminars, workshops, camps ...","full":true},
+    {"step":"ministry","name":"past_host_churches","label":"Past host churches, events or highlights","kind":"textarea","rows":4,"placeholder":"Name and location; specify what we may mention publicly.","full":true},
+    {"step":"ministry","name":"statement_of_faith","label":"Statement of faith or ministry approach","kind":"textarea","rows":4,"placeholder":"Optional—only what you approve for publication.","full":true},
+    {"step":"ministry","name":"sermon_links","label":"Links to sermons, talks or ministry footage","kind":"textarea","rows":3,"placeholder":"Paste one link per line.","full":true},
+
+    {"step":"artist","name":"genres_musical_style","label":"Genres / musical style","kind":"text","required":true,"placeholder":"e.g. Gospel, Amapiano, Afro House","full":false},
+    {"step":"artist","name":"performance_format","label":"Performance format","kind":"text","placeholder":"Solo, full band, DJ set, worship team ...","full":false},
+    {"step":"artist","name":"key_songs_releases","label":"Key songs, projects and releases","kind":"textarea","rows":4,"placeholder":"Titles, years and links to featured releases ...","full":true},
+    {"step":"artist","name":"streaming_links","label":"Streaming, music and performance links","kind":"textarea","rows":3,"placeholder":"Spotify, Apple Music, YouTube, SoundCloud, Audiomack ...","full":true},
+    {"step":"artist","name":"performance_highlights","label":"Notable performances, collaborations, awards or coverage","kind":"textarea","rows":4,"placeholder":"Event names, years, artists and media coverage ...","full":true},
+    {"step":"artist","name":"live_video_links","label":"Performance sample / live video links","kind":"textarea","rows":3,"placeholder":"Your best live footage, one link per line.","full":true},
+
+    {"step":"bookings","name":"public_booking_email","label":"Public booking email","kind":"email","placeholder":"bookings@example.com","hint":"Only if approved for display.","full":false},
+    {"step":"bookings","name":"public_booking_phone","label":"Public WhatsApp / phone","kind":"tel","placeholder":"+27 ...","hint":"Only if approved for display.","full":false},
+    {"step":"bookings","name":"booking_contact_manager","label":"Booking contact person / manager","kind":"text","placeholder":"Name and role, if applicable","full":false},
+    {"step":"bookings","name":"travel_coverage","label":"Travel coverage","kind":"select","options":[["","Choose your coverage"],["local","Local / nearby"],["south-africa","Across South Africa"],["international","South Africa & international"]],"full":false},
+    {"step":"bookings","name":"booking_process","label":"Preferred invitation or booking process","kind":"textarea","required":true,"rows":4,"placeholder":"Should people send a WhatsApp, email, booking form or contact your manager first? Any notice period?","full":true},
+    {"step":"bookings","name":"event_requirements","label":"Practical event requirements","kind":"textarea","rows":4,"placeholder":"Travel, accommodation, sound, setup, performance duration or hospitality ...","hint":"Do not include sensitive personal or financial details.","full":true},
+    {"step":"bookings","name":"private_commercial_arrangements","label":"Commercial arrangements — PRIVATE","kind":"textarea","rows":3,"placeholder":"Honorarium, fees or travel contribution expectations (optional)","hint":"For internal planning only. Never published without separate approval.","full":true,"private":true},
+
+    {"step":"media","name":"media_folder_link","label":"Shared media folder link","kind":"url","required":true,"placeholder":"https://drive.google.com/...","hint":"An accessible Google Drive, OneDrive or Dropbox folder. For media not ready, enter 'Will provide later'.","full":true,"allow_later":true},
+    {"step":"media","name":"media_inventory","label":"Media inventory","kind":"textarea","rows":3,"placeholder":"Headshots, performance photos, logos, videos, artwork ...","full":true},
+    {"step":"media","name":"social_media_links","label":"Official social media / website links","kind":"textarea","rows":4,"placeholder":"Instagram — https://...\nFacebook — https://...\nWebsite — https://...","full":true},
+    {"step":"media","name":"testimonials_quotes","label":"Testimonials, endorsements or press quotes","kind":"textarea","rows":4,"placeholder":"Quote, name and role of the person; confirm you have permission to share.","full":true},
+    {"step":"media","name":"preferred_colours_style","label":"Preferred colours / style","kind":"text","placeholder":"e.g. warm neutrals, modern and elegant","full":false},
+    {"step":"media","name":"domain_preference","label":"Website / domain preference","kind":"text","placeholder":"An existing domain or a preferred address","full":false},
+    {"step":"media","name":"primary_cta_examples","label":"Primary call to action and example EPKs","kind":"textarea","rows":3,"placeholder":"What should visitors do first? Any EPK examples you like?","full":true},
+
+    {"step":"approval","name":"public_contact_details","label":"What contact details may be shown publicly?","kind":"textarea","required":true,"rows":3,"placeholder":"List exactly which email, WhatsApp number, city and links can appear, or enter 'None'.","full":true},
+    {"step":"approval","name":"media_rights_confirmation","label":"Media and quotation rights confirmation","kind":"select","required":true,"options":[["","Select a confirmation"],["confirmed","I own or have permission to use all material supplied"],["pending","Some permissions are still pending—please confirm with me before using them"]],"hint":"Material with pending permissions will not be published.","full":true},
+    {"step":"approval","name":"final_review_restrictions","label":"Final content review contact and publication restrictions","kind":"textarea","required":true,"rows":4,"placeholder":"Who approves the draft? Mention anything that must remain private or needs separate approval.","full":true},
+    {"step":"approval","name":"completed_by","label":"Completed by / name","kind":"text","required":true,"placeholder":"Your full name","full":false},
+    {"step":"approval","name":"date_completed","label":"Date completed","kind":"date","required":true,"full":false}
+  ]
+}

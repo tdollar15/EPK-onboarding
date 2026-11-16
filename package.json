@@ -1,0 +1,19 @@
+{
+  "name": "epk-onboarding",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "EPK Studio client onboarding and invitation-only administration",
+  "scripts": {
+    "build:admin": "esbuild admin/admin.js --bundle --platform=browser --format=esm --target=es2022 --outfile=dist/admin/app.js --minify",
+    "test:workflow": "node --test tests/workflow.test.mjs"
+  },
+  "dependencies": {
+    "@netlify/database": "2.0.3",
+    "@netlify/identity": "2.0.1",
+    "@netlify/functions": "6.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

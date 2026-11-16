@@ -80,6 +80,7 @@ content=f'''<!doctype html>
     <div class="step-pills" id="mobileSteps" aria-label="Form sections"></div>
     <form id="epkForm" name="epk-client-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" enctype="multipart/form-data" novalidate>
       <input type="hidden" name="form-name" value="epk-client-intake" />
+      <input type="hidden" name="application_id" id="applicationId" value="" />
       <input type="hidden" name="subject" value="New EPK onboarding · %{{submissionId}}" />
       <input type="hidden" name="email" id="replyEmail" value="" />
       <p class="honeypot" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
@@ -92,16 +93,18 @@ content=f'''<!doctype html>
 </div>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script type="application/json" id="schemaData">{json.dumps(schema,ensure_ascii=False).replace('</','<\\/')}</script>
+<script>if (/^#(?:invite_token|recovery_token|confirmation_token|email_change_token)=/.test(location.hash)) location.replace('/admin/' + location.hash);</script>
 <script src="./app.js" defer></script>
 </body>
 </html>
 '''
-# Keep a generated source copy for inspection and local UI tests, but publish only
-# the generated site. This prevents shipping schema, tests, readme, and previews.
-(ROOT / 'index.html').write_text(content, encoding='utf-8')
+(ROOT / 'index.html').write_text(content,encoding='utf-8')
 DIST = ROOT / 'dist'
 DIST.mkdir(exist_ok=True)
 (DIST / 'index.html').write_text(content, encoding='utf-8')
 for asset in ('app.js', 'styles.css', 'favicon.svg', 'thank-you.html'):
     shutil.copyfile(ROOT / asset, DIST / asset)
-print(f"Built {DIST/'index.html'} with {len(schema['fields'])} approved fields")
+(DIST / 'admin').mkdir(exist_ok=True)
+for asset in ('index.html', 'admin.css', 'schema.json'):
+    shutil.copyfile(ROOT / 'admin' / asset, DIST / 'admin' / asset)
+print(f"Built {ROOT/'index.html'} with {len(schema['fields'])} approved fields")
